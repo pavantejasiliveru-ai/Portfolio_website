@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Pavan | Python Developer Portfolio{% endblock %}
+
+{% block content %}
+<section id="about" class="hero section">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <p class="eyebrow">Hello, I'm</p>
+            <h1>Siliveru <span>Pavan Teja</span></h1>
+            <h2>Python Developer</h2>
+            <p class="intro-text">
+                I'm an aspiring Python developer with a foundation in
+                backend development, databases, and web technologies.
+                I enjoy building practical applications and learning
+                how to create useful, reliable software.
+            </p>
+            <div class="hero-actions">
+                <a href="#projects" class="button button-primary">View My Projects</a>
+                <a href="#contact" class="button button-outline">Contact Me</a>
+            </div>
+        </div>
+
+        <div class="profile-wrap">
+            {% if profile_image_exists %}
+                <img
+                    src="{{ url_for('static', path='images/profile.jpeg') }}"
+                    alt="Portrait of Pavan"
+                    class="profile-photo">
+            {% else %}
+                <div class="profile-placeholder" role="img" aria-label="Profile photo placeholder">
+                    PT
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section id="education" class="section">
+    <div class="container narrow-container">
+        <div class="section-heading">
+            <p class="eyebrow">My background</p>
+            <h2>Education</h2>
+        </div>
+        <article class="education-card">
+            <h3>B.Tech – Artificial Intelligence and Machine Learning</h3>
+            <p>Sri Indu College of Engineering and Technology</p>
+        </article>
+        <article class="education-card">
+            <h3> Diploma – Electrical and Electronics Engineering </h3>
+            <p>TKR College of Engineering and Technology</p>
+        </article>
+        <article class="education-card">
+            <h3>SSC – Secondary School Certificate</h3>
+            <p>St. Maria High School</p>
+        </article>
+    </div>
+</section>
+
+<section id="skills" class="section section-alt">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">What I work with</p>
+            <h2>Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+            {% for skill in skills %}
+                <div class="skill-card">{{ skill }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <div class="container">
+        <div class="section-heading">
+            <p class="eyebrow">What I've built</p>
+            <h2>My Projects</h2>
+        </div>
+        <div class="projects-grid">
+            {% for project in projects %}
+                <article class="project-card">
+                    <h3>{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    <div class="technology-list">
+                        {% for technology in project.technologies %}
+                            <span class="technology">{{ technology }}</span>
+                        {% endfor %}
+                    </div>
+                    <a href="{{ project.github_url }}" class="github-project-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section section-alt">
+    <div class="container narrow-container contact-section">
+        <div class="section-heading">
+            <p class="eyebrow">Let's connect</p>
+            <h2>Contact Me</h2>
+        </div>
+        <p>If you would like to discuss a project or an opportunity, feel free to contact me.</p>
+        <div class="contact-links">
+            <a href="mailto:pavantejasiliveru@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                Email
+            </a>
+            <a href="https://github.com/pavantejasiliveru-ai" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/your-username/" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
